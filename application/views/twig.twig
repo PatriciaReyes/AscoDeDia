@@ -1,0 +1,15 @@
+{% extends 'include/template.php' %}
+
+{% block main_content %}
+
+	{% for nombre in paco %}
+		<div>{{ nombre }}</div>
+	{% endfor %}
+
+	<div></div>
+
+	{% for r in records %}
+		<div>{{ r.titulo }}</div>
+	{% endfor %}
+	
+{% endblock main_content %}

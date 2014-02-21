@@ -1,0 +1,51 @@
+{% extends _layout %}
+
+{% block main_content %}	
+	<div class="alert alert-info">
+		<h2>Moderar Posts</h2>
+		<h6>
+			<p><i class="icon-remove"></i> Eliminar</p>
+			<p><i class="icon-pencil"></i> Editar</p>
+		</h6>
+	</div>
+
+	{# Tabla de Posts #}
+	<table class="table table-striped">
+		<thead>
+			<tr> 
+				<th>ID</th>
+				<th>Fecha</th>
+				<th>Autor</th>
+				<th>Tema</th>
+				<th>Titulo</th>
+				<th>Mensaje</th>
+				<th><i class="icon-plus"></th>
+				<th><i class="icon-minus"></th>  
+			</tr>
+		</thead>
+		<tbody>
+			{% if (isset(records)) %}
+			 	{% for row in records %}
+					<div>
+						<tr>
+							<td><a href="/ver_post/{{ row.id }}">{{ row.id }}</a></td>
+							<td>{{ row.fecha }}</td>
+							<td>{{ row.user_username}}</td>
+							<td>{{ row.tag_nombre }}</td>
+							<td>{{ row.titulo }}</td>
+							<td>{{ row.contenido }}</td>
+							<td>{{ row.gusta }}</td>
+							<td>{{ row.no_gusta }}</td>
+							<td><a class="btn btn-inverse" href="/eliminarp/{{row.id}}"><i class="icon-remove icon-white"></i></a></td>
+                  <td><a class="btn btn-primary" href="/post/{{row.id}}"><i class="icon-pencil icon-white"></i></a></td> 
+						</tr>
+					</div>
+				{% endfor %}
+			{% else %} 
+				<h6>No hay ningun Post publicado.</h6>
+			{% endif %}
+		</tbody>
+	</table>
+				
+	<a class="btn-primary btn-large" href="/post">Agregar post</a>
+{% endblock main_content %}
